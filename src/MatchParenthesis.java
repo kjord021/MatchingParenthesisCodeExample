@@ -1,9 +1,22 @@
 
+
 public class MatchParenthesis {
 
 	public static void main(String[] args) {
 		
-		String input = "(())(())";
+		String input = "(write (setf my-array (make-array '(10))))\n" +
+				"(terpri)\n" +
+				"(setf (aref my-array 0) 25)\n" +
+				"(setf (aref my-array 1) 23)\n" +
+				"(setf (aref my-array 2) 45)\n" +
+				"(setf (aref my-array 3) 10)\n" +
+				"(setf (aref my-array 4) 20)\n" +
+				"(setf (aref my-array 5) 17)\n" +
+				"(setf (aref my-array 6) 25)\n" +
+				"(setf (aref my-array 7) 19)\n" +
+				"(setf (aref my-array 8) 67)\n" +
+				"(setf (aref my-array 9) 30)\n" +
+				"(write my-array)";
 		char openingChar = '(';
 		char closingChar = ')';
 		
@@ -24,10 +37,13 @@ public class MatchParenthesis {
 			//Else if we find a closingChar at the current index of characterArray
 			else if (c == closingChar) {
 				//Peek the expected stack and make sure that we have the correct result
-				if (sv.peekExpected() == c) {
+				if (sv.peekExpected() != null) {
 					//Remove closing char from both stacks
 					sv.removeFromActual();
 					sv.removeFromExpected();
+				}
+				else {
+					sv.addToActual(closingChar);
 				}
 			}
 			

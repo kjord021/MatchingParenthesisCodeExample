@@ -1,3 +1,4 @@
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class StackValidator {
@@ -26,17 +27,22 @@ public class StackValidator {
 	
 	//Functions that Let you peek the first character from corresponding stack
 	public Character peekActual() {
-		if (!actualEmpty()) {
+
+		try {
 			return actual.peek();
 		}
-		else return Character.MIN_VALUE;
+		catch (EmptyStackException e) {
+			return null;
+		}
 	}
 	
 	public Character peekExpected() {
-		if (!expectedEmpty()) {
+		try {
 			return expected.peek();
 		}
-		else return Character.MIN_VALUE;
+		catch (EmptyStackException e) {
+			return null;
+		}
 	}
 	
 	//Functions that let you determine if corresponding stack is empty
