@@ -36,12 +36,13 @@ public class MatchParenthesis {
 			}
 			//Else if we find a closingChar at the current index of characterArray
 			else if (c == closingChar) {
-				//Peek the expected stack and make sure that we have the correct result
+				//Peek the expected stack and make sure that we have an expected parenthesis
 				if (sv.peekExpected() != null) {
 					//Remove closing char from both stacks
 					sv.removeFromActual();
 					sv.removeFromExpected();
 				}
+				//Otherwise add an extra closing parenthesis to the actual stack
 				else {
 					sv.addToActual(closingChar);
 				}
